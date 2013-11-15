@@ -111,16 +111,16 @@ public:
     
     // output of the playing field
     void print() {
-        char* color_list[] = {"\033[1;37m", "\033[1;30m", "\033[1;31m", "\033[1;32m", "\033[1;33m", "\033[1;34m", "\033[1;35m", "\033[1;36m", "\033[1;37m", "\033[1;30m"}; // White, Black, Red, Green, Yellow, Blue, Magenta, Cyan, Black
+        char* color_list[] = {"\033[1;31m", "\033[1;32m", "\033[1;33m", "\033[1;34m", "\033[1;35m", "\033[1;36m", "\033[1;37m", "\033[1;30m","\033[1;37m", "\033[1;30m"}; // White, Black, Red, Green, Yellow, Blue, Magenta, Cyan, Black
         for(size_type i = 0; i < cst::height + 2 * cst::border_size; ++i) {   
             for(size_type j = 0; j < cst::width + 2 * cst::border_size; ++j) {
                 // black background - put in if you don't use a black terminal (not recommended - acute danger of eye cancer!)
-                Serial.print("\033[0;40m");  
+                //~ Serial.print("\033[0;40m");  
                 if(get(i, j) == cst::empty) {
                     Serial.print(" ");
                 }
                 else if(get(i, j) == cst::border) {
-                    Serial.print(color_list[1]);
+                    Serial.print(color_list[cst::number_of_shapes]);
                     Serial.print("O");
                 }
                 else {
